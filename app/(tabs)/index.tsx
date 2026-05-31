@@ -1,45 +1,86 @@
 import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 
 import { ScreenContainer } from "@/components/screen-container";
 
 /**
- * Home Screen - NativeWind Example
+ * Home Screen - TokenMint Platform
  *
- * This template uses NativeWind (Tailwind CSS for React Native).
- * You can use familiar Tailwind classes directly in className props.
- *
- * Key patterns:
- * - Use `className` instead of `style` for most styling
- * - Theme colors: use tokens directly (bg-background, text-foreground, bg-primary, etc.); no dark: prefix needed
- * - Responsive: standard Tailwind breakpoints work on web
- * - Custom colors defined in tailwind.config.js
+ * Main entry point showing platform overview and quick actions.
  */
 export default function HomeScreen() {
+  const router = useRouter();
+
+  const handleStartProject = () => {
+    // Navigate to project setup wizard
+    console.log("Navigate to project setup");
+  };
+
+  const handleViewProjects = () => {
+    // Navigate to projects list
+    console.log("Navigate to projects");
+  };
+
+  const handleLearnHardhat = () => {
+    // Open documentation or guide
+    console.log("Navigate to learning resources");
+  };
+
   return (
     <ScreenContainer className="p-6">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View className="flex-1 gap-8">
           {/* Hero Section */}
-          <View className="items-center gap-2">
-            <Text className="text-4xl font-bold text-foreground">Welcome</Text>
-            <Text className="text-base text-muted text-center">
-              Edit app/(tabs)/index.tsx to get started
+          <View className="items-center gap-3 mt-4">
+            <Text className="text-5xl font-bold text-foreground">TokenMint</Text>
+            <Text className="text-lg text-muted text-center">
+              Create & Deploy ERC-20 Tokens on Ethereum
             </Text>
           </View>
 
-          {/* Example Card */}
-          <View className="w-full max-w-sm self-center bg-surface rounded-2xl p-6 shadow-sm border border-border">
-            <Text className="text-lg font-semibold text-foreground mb-2">NativeWind Ready</Text>
-            <Text className="text-sm text-muted leading-relaxed">
-              Use Tailwind CSS classes directly in your React Native components.
-            </Text>
-          </View>
-
-          {/* Example Button */}
-          <View className="items-center">
-            <TouchableOpacity className="bg-primary px-6 py-3 rounded-full active:opacity-80">
-              <Text className="text-background font-semibold">Get Started</Text>
+          {/* Quick Action Cards */}
+          <View className="gap-4 mt-4">
+            {/* Start New Project Card */}
+            <TouchableOpacity
+              onPress={handleStartProject}
+              className="bg-primary rounded-2xl p-6 active:opacity-80"
+            >
+              <Text className="text-xl font-bold text-background mb-2">Start New Project</Text>
+              <Text className="text-sm text-background opacity-90">
+                Create a new ERC-20 token with step-by-step guidance
+              </Text>
             </TouchableOpacity>
+
+            {/* View My Tokens Card */}
+            <TouchableOpacity
+              onPress={handleViewProjects}
+              className="bg-surface rounded-2xl p-6 border border-border active:opacity-70"
+            >
+              <Text className="text-lg font-semibold text-foreground mb-2">View My Tokens</Text>
+              <Text className="text-sm text-muted">
+                Manage your deployed tokens and projects
+              </Text>
+            </TouchableOpacity>
+
+            {/* Learn Hardhat Card */}
+            <TouchableOpacity
+              onPress={handleLearnHardhat}
+              className="bg-surface rounded-2xl p-6 border border-border active:opacity-70"
+            >
+              <Text className="text-lg font-semibold text-foreground mb-2">Learn Hardhat</Text>
+              <Text className="text-sm text-muted">
+                Explore deployment guides and best practices
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Info Section */}
+          <View className="bg-surface rounded-2xl p-4 border border-border mt-4">
+            <Text className="text-sm font-semibold text-foreground mb-2">🔒 Safe & Secure</Text>
+            <Text className="text-xs text-muted leading-relaxed">
+              Test on Sepolia testnet before deploying to Ethereum mainnet. All deployments use
+              industry-standard OpenZeppelin contracts.
+            </Text>
           </View>
         </View>
       </ScrollView>

@@ -1,0 +1,11 @@
+{
+  "name": "Sample Token",
+  "symbol": "STK",
+  "decimals": 18,
+  "contractAddress": "0x0000000000000000000000000000000000000000",
+  "website": "https://example.com",
+  "description": "A sample token for demonstrating Trust Wallet token metadata compatibility.",
+  "explorer": "https://blockchain-explorer.com/address/0x0000000000000000000000000000000000000000",
+  "status": "active",
+  "id": "sample-token"
+}

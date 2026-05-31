@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 import { ScreenContainer } from "@/components/screen-container";
 import {
-  estimateDeploymentCost,
   compareDeploymentCosts,
   formatGasPrice,
   formatEth,

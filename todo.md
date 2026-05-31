@@ -165,3 +165,31 @@
 - [ ] Real-time gas price estimation
 - [ ] Multi-language support
 - [ ] Community contract library/marketplace
+
+
+## Gas Fee Estimator Feature (NEW)
+
+### Gas Estimator Utilities
+- [x] Create gas price fetcher utility (fetch from Etherscan/Alchemy API)
+- [x] Implement deployment cost calculator
+- [x] Create ETH to USD price converter
+- [ ] Add gas estimation caching to reduce API calls
+
+### Gas Estimator Screen
+- [x] Design and implement Gas Estimator screen
+- [x] Create network selector (Sepolia vs. Mainnet)
+- [x] Display real-time gas prices (standard, fast, urgent)
+- [x] Show estimated deployment costs in ETH and USD
+- [x] Add contract size and gas limit information
+- [x] Implement cost comparison between networks
+
+### Navigation & Integration
+- [x] Add Gas Estimator tab to bottom navigation
+- [x] Update tab layout with new icon mapping
+- [x] Add Gas Estimator link to Home screen
+- [ ] Add Gas Estimator link to Deploy screen
+
+### Documentation
+- [ ] Update README.md with Gas Estimator feature description
+- [ ] Add Gas Estimator section to HARDHAT_README.md
+- [ ] Document gas price sources and accuracy limitations

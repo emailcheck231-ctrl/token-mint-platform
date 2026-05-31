@@ -72,6 +72,17 @@ export default function HomeScreen() {
                 Explore deployment guides and best practices
               </Text>
             </TouchableOpacity>
+
+            {/* Gas Estimator Card */}
+            <TouchableOpacity
+              onPress={() => console.log("Navigate to gas estimator")}
+              className="bg-surface rounded-2xl p-6 border border-border active:opacity-70"
+            >
+              <Text className="text-lg font-semibold text-foreground mb-2">Estimate Gas Fees</Text>
+              <Text className="text-sm text-muted">
+                Calculate deployment costs on Sepolia and Mainnet
+              </Text>
+            </TouchableOpacity>
           </View>
 
           {/* Info Section */}

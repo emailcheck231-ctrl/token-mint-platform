@@ -65,6 +65,7 @@ The TokenMint mobile app is built with React Native and Expo, providing a smooth
 | **Deploy** | Configure and execute deployment with safety checks |
 | **Wallet Integration** | Add tokens to MetaMask or Trust Wallet |
 | **Liquidity Pool** | Create and manage Uniswap liquidity pools |
+| **Gas Estimator** | Calculate real-time deployment costs on Sepolia and Mainnet |
 | **Settings** | Configure RPC URLs, private keys, and app preferences |
 
 ### Technology Stack
@@ -171,6 +172,20 @@ Create liquidity pools to enable token trading. This section covers:
 - Managing liquidity
 
 **Read the full guide:** See [HARDHAT_README.md - Section 7](./HARDHAT_README.md#7-setting-up-liquidity-pools-on-uniswap)
+
+## Gas Fee Estimator
+
+The TokenMint app includes a built-in Gas Fee Estimator that helps you understand deployment costs before committing real funds. This feature fetches real-time gas prices and calculates estimated deployment costs in both ETH and USD.
+
+**Key Features:**
+
+The Gas Estimator provides real-time gas prices from Etherscan API, allowing you to compare costs between Sepolia testnet and Ethereum mainnet. You can view three different gas price tiers (Standard, Fast, Urgent) with corresponding speed and cost estimates. The tool also converts costs to USD based on current ETH prices and warns you if gas prices are unusually high.
+
+**How to Access:**
+
+You can access the Gas Estimator by tapping the Gas tab at the bottom of the app, or by selecting the Estimate Gas Fees card on the home screen. The estimator displays real-time data and allows you to refresh prices at any time.
+
+**For Detailed Information:** See [GAS_ESTIMATOR_GUIDE.md](./GAS_ESTIMATOR_GUIDE.md) for comprehensive information about gas fees, optimization tips, and frequently asked questions.
 
 ### 8. Safety Considerations: Testnet vs. Mainnet
 

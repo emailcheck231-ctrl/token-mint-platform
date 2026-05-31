@@ -1,7 +1,7 @@
-import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { ScrollView, Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
-
 import { ScreenContainer } from "@/components/screen-container";
+import { trpc } from "@/lib/trpc";
 
 /**
  * Home Screen - TokenMint Platform
@@ -10,6 +10,7 @@ import { ScreenContainer } from "@/components/screen-container";
  */
 export default function HomeScreen() {
   const router = useRouter();
+  const { data: wallet, isLoading: walletLoading } = trpc.crypto.getWallet.useQuery();
 
   const handleStartProject = () => {
     // Navigate to project setup wizard
@@ -26,6 +27,10 @@ export default function HomeScreen() {
     console.log("Navigate to learning resources");
   };
 
+  const handleImportCrypto = () => {
+    router.push("/import-crypto");
+  };
+
   return (
     <ScreenContainer className="p-6">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -38,16 +43,58 @@ export default function HomeScreen() {
             </Text>
           </View>
 
+          {/* Wallet Status Card */}
+          <View className={`rounded-2xl p-4 border ${
+            wallet
+              ? "bg-success/10 border-success"
+              : "bg-warning/10 border-warning"
+          }`}>
+            <View className="flex-row items-center justify-between">
+              <View className="flex-1 gap-1">
+                <Text className="font-semibold text-foreground">
+                  {wallet ? "Wallet Connected" : "Wallet Not Connected"}
+                </Text>
+                <Text className="text-xs text-muted">
+                  {wallet
+                    ? `${wallet.publicKey.slice(0, 8)}...${wallet.publicKey.slice(-6)}`
+                    : "Import a wallet to start minting tokens"}
+                </Text>
+              </View>
+              {walletLoading && <ActivityIndicator size="small" />}
+            </View>
+          </View>
+
           {/* Quick Action Cards */}
           <View className="gap-4 mt-4">
+            {/* Import Crypto Card - Only show if wallet not connected */}
+            {!wallet && (
+              <TouchableOpacity
+                onPress={handleImportCrypto}
+                className="bg-primary rounded-2xl p-6 active:opacity-80"
+              >
+                <Text className="text-xl font-bold text-background mb-2">Import Crypto Wallet</Text>
+                <Text className="text-sm text-background opacity-90">
+                  Connect your wallet and unlock token minting features
+                </Text>
+              </TouchableOpacity>
+            )}
+
             {/* Start New Project Card */}
             <TouchableOpacity
               onPress={handleStartProject}
-              className="bg-primary rounded-2xl p-6 active:opacity-80"
+              className={`rounded-2xl p-6 active:opacity-80 ${
+                wallet ? "bg-primary" : "bg-surface border border-border"
+              }`}
             >
-              <Text className="text-xl font-bold text-background mb-2">Start New Project</Text>
-              <Text className="text-sm text-background opacity-90">
-                Create a new ERC-20 token with step-by-step guidance
+              <Text className={`text-xl font-bold mb-2 ${
+                wallet ? "text-background" : "text-foreground"
+              }`}>Start New Project</Text>
+              <Text className={`text-sm ${
+                wallet ? "text-background opacity-90" : "text-muted"
+              }`}>
+                {wallet
+                  ? "Create a new ERC-20 token with step-by-step guidance"
+                  : "Import a wallet first to create tokens"}
               </Text>
             </TouchableOpacity>
 
